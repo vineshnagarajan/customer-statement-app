@@ -4,10 +4,10 @@ import {MatSort, MatTableDataSource} from '@angular/material';
 
 @Component({
   selector: 'app-front-end-assignment',
-  templateUrl: './front-end-assignment.component.html',
-  styleUrls: ['./front-end-assignment.component.css']
+  templateUrl: './customer-statement.component.html',
+  styleUrls: ['./customer-statement.component.css']
 })
-export class FrontEndAssignmentComponent implements OnInit {
+export class CustomerStatementComponent implements OnInit {
   title = 'Reports';
   displayLog = '';
   myDataArray = new MatTableDataSource<any>();

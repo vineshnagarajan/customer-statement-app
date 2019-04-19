@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {FrontEndAssignmentComponent} from './front-end-assignment/front-end-assignment.component';
+import {CustomerStatementComponent} from './customer-statement/customer-statement.component';
 
 
 
 const routes: Routes = [
     {
         path: '',
-        component: FrontEndAssignmentComponent
+        component: CustomerStatementComponent
 
     },
     {
         path: 'FEComp',
-        component: FrontEndAssignmentComponent
+        component: CustomerStatementComponent
     }
 ];
 

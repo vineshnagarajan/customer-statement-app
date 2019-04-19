@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FrontEndAssignmentComponent } from './front-end-assignment.component';
+import { CustomerStatementComponent } from './customer-statement.component';
 
 import {MatSort, MatTableDataSource} from '@angular/material';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
@@ -15,13 +15,13 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 
-describe('FrontEndAssignmentComponent', () => {
-  let component: FrontEndAssignmentComponent;
-  let fixture: ComponentFixture<FrontEndAssignmentComponent>;
+describe('CustomerStatementComponent', () => {
+  let component: CustomerStatementComponent;
+  let fixture: ComponentFixture<CustomerStatementComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FrontEndAssignmentComponent ],
+      declarations: [ CustomerStatementComponent ],
       imports: [
         BrowserModule, NgbModule.forRoot() , MatInputModule,
         MatTableModule,
@@ -38,7 +38,7 @@ describe('FrontEndAssignmentComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FrontEndAssignmentComponent);
+    fixture = TestBed.createComponent(CustomerStatementComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
