@@ -1,0 +1,16 @@
+table {
+    width: 100%;
+  }
+  
+  th.mat-sort-header-sorted {
+    color: black;
+  }
+
+  .mat-tab-links {
+    position: relative;
+    display: flex;
+    background-color: var(--dark);
+}
+a.tabi {
+    padding-right: 20px;
+}
