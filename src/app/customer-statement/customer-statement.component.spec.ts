@@ -2,16 +2,17 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CustomerStatementComponent } from './customer-statement.component';
 
-import {MatSort, MatTableDataSource} from '@angular/material';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { MatInputModule, MatPaginatorModule, MatProgressSpinnerModule,
-  MatSortModule, MatTableModule } from '@angular/material';
+import {
+  MatInputModule, MatPaginatorModule, MatProgressSpinnerModule,
+  MatSortModule, MatTableModule
+} from '@angular/material';
 
 import { PapaParseModule } from 'ngx-papaparse';
 
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 
@@ -21,9 +22,9 @@ describe('CustomerStatementComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CustomerStatementComponent ],
+      declarations: [CustomerStatementComponent],
       imports: [
-        BrowserModule, NgbModule.forRoot() , MatInputModule,
+        BrowserModule, NgbModule.forRoot(), MatInputModule,
         MatTableModule,
         MatPaginatorModule,
         MatSortModule,
@@ -31,10 +32,10 @@ describe('CustomerStatementComponent', () => {
         PapaParseModule,
         BrowserAnimationsModule
       ],
-      schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
 
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

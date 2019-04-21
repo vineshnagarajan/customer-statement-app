@@ -1,6 +1,7 @@
-import { Component , OnInit , ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { PapaParseService } from 'ngx-papaparse';
-import {MatSort, MatTableDataSource} from '@angular/material';
+import { MatSort, MatTableDataSource } from '@angular/material';
+import { FileParserService } from '../shared/services/file-parser.service';
 
 @Component({
   selector: 'app-front-end-assignment',
@@ -14,34 +15,44 @@ export class CustomerStatementComponent implements OnInit {
   displayedColumns = [];
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private papa: PapaParseService) { }
+  constructor(private papa: PapaParseService, private fileParserService: FileParserService) { }
   public changeListener(files: FileList) {
+    let csvData: any;
     console.log(files);
     if (files && files.length > 0) {
       const file: File = files.item(0);
       console.log(file.name);
-      console.log(file.size);
-      console.log(file.type);
+      if (!file.name.includes('csv')) {
+        alert('Please Select Valid CSV file ');
+      }
       const reader: FileReader = new FileReader();
       reader.readAsText(file);
       reader.onload = (e) => {
-        const csv: string = reader.result;
-        console.log(csv);
+        csvData = reader.result;
+        const csvRecordsArray = csvData.toString().split(/\r\n|\n/);
+        let headersRow: any;
+        console.log(csvData);
+        this.fileParserService
+          .getHeaderArray(csvRecordsArray).subscribe(headers => {
+            console.log('headers', headers);
+            headersRow = headers;
+
+          });
+
+        this.fileParserService.getDataRecordsArrayFromCSVFile(csvRecordsArray, headersRow.length)
+          .subscribe(result => {
+            console.log('headers', result);
+            this.myDataArray = new MatTableDataSource(result);
+            this.myDataArray.sort = this.sort;
+            this.displayedColumns = headersRow;
+          });
       };
-      this.papa.parse(file, {
-        header: true,
-        skipEmptyLines: true,
-        complete: (results) => {
-          console.log('Parsed: ', results);
-          console.log('JSON: ', JSON.stringify(results.data));
-          console.log('Column names: ', results.meta.fields);
-          this.displayLog = JSON.stringify(results.data);
-          this.myDataArray = new MatTableDataSource(results.data);
-          this.displayedColumns = results.meta.fields;
-          this.myDataArray.sort = this.sort;
-        }
-      });
-        }
+      reader.onerror = function () {
+        alert('Unable to read ' + files.item(0));
+      };
+    } else {
+      alert('Please import valid .csv file.');
+    }
   }
 
   ngOnInit() {
